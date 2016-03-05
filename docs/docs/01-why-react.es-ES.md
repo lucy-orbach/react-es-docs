@@ -1,29 +1,29 @@
 ---
-id: why-react
-title: Why React?
-permalink: why-react.html
-next: displaying-data.html
+id: why-react-es-ES
+title: ¿Por qué React?
+permalink: why-react-es-ES.html
+next: displaying-data-es-ES.html
 ---
-React is a JavaScript library for creating user interfaces by Facebook and Instagram. Many people choose to think of React as the **V** in **[MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)**.
+React es una librería basada en javascript para la creación de interfaces de usuario creada por Facebook e Instagram. Muchas personas piensan en react como la **V** en **[MVC](https://es.wikipedia.org/wiki/Modelo-vista-controlador)**.
 
-We built React to solve one problem: **building large applications with data that changes over time**.
+Usamos React para resolver un problema: **Construir aplicaciones grandes con datos que cambian a través del tiempo**.
 
 ## Simple
 
-Simply express how your app should look at any given point in time, and React will automatically manage all UI updates when your underlying data changes.
+Declara como tu aplicación deberá de verse en todo momento y React automáticamente manejará todos los cambios de interfaz de usuario cuando cambien los datos subyacentes.
 
-## Declarative
+## Declarativo
 
-When the data changes, React conceptually hits the "refresh" button, and knows to only update the changed parts.
+Cuando los datos cambian, React conceptualmente pulsa el boton "refrescar" y sabe que solo actualizará la parte que cambió.
 
-## Build Composable Components
+## Construir Composable Components
 
-React is all about building reusable components. In fact, with React the *only* thing you do is build components. Since they're so encapsulated, components make code reuse, testing, and separation of concerns easy.
+React tiene que ver con la construcción de componentes reutilizables. De hecho, con React lo *único* que se hace es construir componentes. Ya que están tan encapsulados, los componentes hacen que la reutilización de código, prueba y seperación de lógica sea fácil.
 
-## Give It Five Minutes
+## Dale 5 minutos
 
-React challenges a lot of conventional wisdom, and at first glance some of the ideas may seem crazy. [Give it five minutes](https://signalvnoise.com/posts/3124-give-it-five-minutes) while reading this guide; those crazy ideas have worked for building thousands of components both inside and outside of Facebook and Instagram.
+React desafía muchos paradigmas convencionales y a primera vista algunas de las ideas pueden parecer una locura. [Dale 5 minutos](https://signalvnoise.com/posts/3124-give-it-five-minutes) mientras lees esta guía; esas ideas locas han trabajado para la construcción de miles de componentes, tanto dentro como fuera de Facebook e Instagram.
 
-## Learn More
+## Aprender Más
 
-You can learn more about our motivations behind building React in [this blog post](/react/blog/2013/06/05/why-react.html).
+Puedes aprender más sobre nuestra motivacion detras de la construcción de React [este blog](/react/blog/2013/06/05/why-react.html).
