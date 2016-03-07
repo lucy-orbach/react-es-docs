@@ -1,6 +1,6 @@
 ---
 id: component-specs
-title: Especificación de componentes y ciclo de vida
+title: Especificación de Componentes y Ciclo de Vida
 permalink: component-specs-es-ES.html
 prev: component-api-es-ES.html
 next: tags-and-attributes-es-ES.html
@@ -8,11 +8,11 @@ next: tags-and-attributes-es-ES.html
 
 ## Especificaciones de Componentes
 
-Cuando creas una clase componente al invocar `React.createClass()`, debes entregar un objeto de especificaion que tenga el método `render` y opcionalmente otros métodos del ciclo de vida descritos aquí.
+ Al invocar `React.createClass()` para crear una clase componente, debes entregar un objeto de especificación que tenga el método `render` y opcionalmente otros métodos del ciclo de vida descritos aquí.
 
 > Nota:
 >
-> También es posible utilizar clases simples de JavaScript como clases de componentes. Estas clases pueden implementar la mayoría de los mismos métodos, pero con algunas diferencias. Para mas información acerca de estas diferencias, por favor lea nuestra documentación acerca de [clases en ES6](/react/docs/reusable-components.html#es6-classes).
+> También es posible utilizar clases simples de JavaScript como clases de componentes. Estas clases pueden implementar la mayoría de los mismos métodos, pero con algunas diferencias. Para más información acerca de estas diferencias, por favor lee nuestra documentación acerca de [clases en ES6](/react/docs/reusable-components.html#es6-classes).
 
 ### render
 
@@ -22,11 +22,11 @@ ReactElement render()
 
 El método `render()` es obligatorio.
 
-Cuando es llamado, examina `this.props` junto a `this.state` y retorna un elemento hijo único . Este elemento puede ser tanto una representación visual de un componente DOM nativo (como un `<div />` o un `React.DOM.div()`) u otro componente definido por ti.
+Cuando es llamado, examina `this.props` junto a `this.state` y regresa un elemento hijo único. Este elemento puede ser tanto una representación visual de un componente DOM nativo (como un `<div />` o un `React.DOM.div()`) u otro componente previamente definido por ti.
 
 También puedes retornar `null` o `false` para indicar que no quieres generar un elemento. Detrás de escena, React genera un tag `<noscript>` para trabajar con nuestro actual algoritmo de diferenciación. Cuando retornas `null` o `false`, `ReactDOM.findDOMNode(this)` retornara `null`.
 
-La función `render()` debe ser *pura*, es decir, que no modifica el estado del componente, debe retornar el mismo resultado cada vez que es invocada, no debe leer o escribir el DOM, ni interactuar de otra forma con el buscador (Ej., al utilizar `setTimeout`). Si necesitas interactuar con el buscador, realiza tu trabajo en `componentDidMount()` o en otro método del ciclo de vida. Mantener `render()` puro hace que el renderizado del servidor sea mas practico, y permite que los componentes sean mas simples de entender.
+La función `render()` debe ser *pura*, es decir, en el sentido de que no modifica el estado del componente, debe retornar el mismo resultado cada vez que es invocada y no debe leer o escribir el DOM, ni interactuar de otra forma con el buscador (Ej., al utilizar `setTimeout`). Si necesitas interactuar con el buscador, realiza tu trabajo en `componentDidMount()` o en otro método del ciclo de vida. El mantener `render()` puro hace que el renderizado del servidor sea más práctico y permite que los componentes sean más simples de entender.
 
 ### getInitialState
 
@@ -34,7 +34,7 @@ La función `render()` debe ser *pura*, es decir, que no modifica el estado del 
 object getInitialState()
 ```
 
-Es invocado por unica vez antes que el componente este montado. El valor de retorno sera utilizado como el valor inicial de `this.state`. 
+Es invocado por única vez antes de que el componente sea montado. El valor de retorno será utilizado como el valor inicial de `this.state`. 
 
 ### getDefaultProps
 
@@ -44,7 +44,7 @@ object getDefaultProps()
 
 Es invocado una sola vez, y guardado en cache cuando la clase es creada. Los valores mapeados son ubicados en `this.props` si la propiedad no es declarada por el componente padre (Ej., usando un chequeo `in`)   
 
-Este método es invocado antes de que cualquier instancia del componente haya sido creada, y por lo tanto no puede confiar en que `this.props` este definida. Adicionalmente, este atento de que cualquier objeto complejo retornado por `getDefaultProps()` sera compartido a través de las instancias, no copiado.  
+Este método es invocado antes de que cualquier instancia del componente haya sido creada, y por lo tanto no puede depender de `this.props`. Adicionalmente, este atento de que cualquier objeto complejo retornado por `getDefaultProps()` será compartido a través de las instancias y no copiado.  
 
 
 ### propTypes
@@ -85,7 +85,7 @@ var MyComponent = React.createClass({
 MyComponent.customMethod('bar');  // true
 ```
 
-Los métodos definidos dentro de este bloque son _estáticos_, esto quiere decir que los puedes llamar antes de que cualquiera instancia del componente sea creada, estos métodos no tienen acceso a los `props` o `state` de tus componentes. Si quieres probar el valor de `props` en un método estático, cuando lo llames debes entregar los valores de props como argumento a este método estático. 
+Los métodos definidos dentro de este bloque son _estáticos_, esto quiere decir que los puedes llamar antes de que cualquiera instancia del componente sea creada y no tienen acceso a los `props` o `state` de tus componentes. Si quieres revisar el valor de `props` en un método estático, cuando lo llames debes entregar los valores de props como argumento a este método estático. 
 
 
 ### displayName
@@ -94,7 +94,7 @@ Los métodos definidos dentro de este bloque son _estáticos_, esto quiere decir
 string displayName
 ```
 
-La cadena de texto `displayName` es utilizada en los mensajes de debugging. JSX fija este valor automáticamente; mire [JSX en profundidad](/react/docs/jsx-in-depth.html#the-transform). 
+La cadena de texto `displayName` es utilizada en los mensajes de debugging. JSX fija este valor automáticamente; mira [JSX en profundidad](/react/docs/jsx-in-depth.html#the-transform). 
 
 
 ## Metodos del ciclo de vida
@@ -108,7 +108,7 @@ Varios métodos son ejecutas en puntos específicos del ciclo de vida de un comp
 void componentWillMount()
 ```
 
-Es invocado una única vez, tanto en el cliente como en el servidor, inmediatamente antes del que el rendering inicial ocurra. Si llamas a `setState` dentro de este método, `render()` vera el cambio de estado y se ejecutara solo una vez, a pesar del cambio de estacdo que ocurrio.  
+Es invocado una única vez, tanto en el cliente como en el servidor, inmediatamente antes del que el rendering inicial ocurra. Si llamas a `setState` dentro de este método, `render()` verá el estado actualizado y sera ejecutado solamente una vez, a pesar del cambio de estado que ocurrio.  
 
 ### Montar: componentDidMount
 
@@ -116,7 +116,7 @@ Es invocado una única vez, tanto en el cliente como en el servidor, inmediatame
 void componentDidMount()
 ```
 
-Es invocado una unica vez, solo en el cliente (no en el servidor), inmediatamente despues de que el rendering inicial ocurra. En este punto del ciclo de vida, puedes acceder a cualquier `ref` de los componentes hijos (Ej., puedes acceder a la representación del DOM). El método `componentDidMount()` de los componentes hijos es invocado antes que el de su componente padre.
+Es invocado una única vez, sólo en el cliente (no en el servidor), inmediatamente después de que el rendering inicial ocurra. En este punto del ciclo de vida, puedes acceder a cualquier `ref` de los componentes hijos (Ej., puedes acceder a la representación del DOM). El método `componentDidMount()` de los componentes hijos es invocado antes que el de su componente padre.
 
 Si deseas hacer una integración con otros frameworks de JavaScript, fijar timers utilizando `setTimeout` o `setInterval`, o enviar peticiones AJAX, puedes realizar esas operaciones en este método.
 
@@ -130,7 +130,7 @@ void componentWillReceiveProps(
 
 Es invocado cuando un componente recibe nuevas props. Este método no es llamado para el rendering inicial.
 
-Se utiliza este método como una oportunidad para reaccionar a una actualización de las propiedades `props` antes que `render()` sea llamado al actualizar el estado utilizando `this.setState()`. Las propiedades antiguas pueden ser accedidas en `this.props`. Llamar `this.setState()` dentro de esta función no genera una llamada adicional a `render()`.
+Se utiliza este método como una oportunidad para reaccionar a una actualización de las propiedades `props` antes que `render()` sea llamado, al actualizar el estado utilizando `this.setState()`. Las propiedades antiguas pueden ser accedidas en `this.props`. Llamar `this.setState()` dentro de esta función no generará una llamada adicional a `render()`.
 
 ```javascript
 componentWillReceiveProps: function(nextProps) {
@@ -142,9 +142,9 @@ componentWillReceiveProps: function(nextProps) {
 
 > Nota:
 >
-> Un error común en la ejecución del código de este meotodo del ciclo de vida, es asumir que las propiedades `props` han cambiado. Para entender porque esto es invalido. lea [que A implique B no implica que B implique A](/react/blog/2016/01/08/A-implies-B-does-not-imply-B-implies-A.html)
+> Un error común en la ejecución del código de este método del ciclo de vida, es asumir que las propiedades `props` han cambiado. Para entender porque esto es invalido. lea [que A implique B no implica que B implique A](/react/blog/2016/01/08/A-implies-B-does-not-imply-B-implies-A.html)
 >
-> No existe un método análogo `componentWillReceiveState`. Una actualización de propiedades puede generar un cambio de estado, pero no lo contrario. Si necesitas realizar una operación en respuesta a un cambio de estado, utiliza `componentWillUpdate`.
+> No existe un método análogo `componentWillReceiveState`. Una actualización de propiedades puede generar un cambio de estado, pero no al revés. Si necesitas realizar una operación en respuesta a un cambio de estado, utiliza `componentWillUpdate`.
 
 ### Actualizar: shouldComponentUpdate
 
@@ -164,9 +164,9 @@ shouldComponentUpdate: function(nextProps, nextState) {
 }
 ```
 
-Si `shouldComponentUpdate` retorna false, la llamada a `render()` no se realizara hasta el siguiente cambio de estado. Además, `componentWillUpdate` y `componentDidUpdate` no seran llamados.
+Si `shouldComponentUpdate` regresa false, la llamada a `render()` no se realizará hasta el siguiente cambio de estado. Además, `componentWillUpdate` y `componentDidUpdate` no seran llamados.
 
-Por defecto, `shouldComponentUpdate` siempre retorna `true` para prevenir sutiles errores cuando el `state` muta (cambia), pero si tienes el cuidado de siempre tratar el `state` como inmutable y solo leer desde `props` y `state` en `render()`, entonces puedes sobreescribir `shouldComponentUpdate` con una implementación que compare las antiguas propiedades y/o estado para su reemplazo.
+Por defecto, `shouldComponentUpdate` siempre regresa `true` para prevenir errores sutiles cuando el `state` cambia, pero si tienes el cuidado de siempre tratar el `state` como inmutable y solo leer desde `props` y `state` en `render()`, entonces puedes sobreescribir `shouldComponentUpdate` con una implementación que compare las antiguas propiedades y/o estado para su reemplazo.
 
 Si el rendimiento es un cuello de botella, especialmente con docenas o cientos de componentes, usa `shouldComponentUpdate` para acelerar tu aplicación. 
 
@@ -178,9 +178,9 @@ void componentWillUpdate(
 )
 ```
 
-Es invocado inmediatamente antes de renderizar, cuando nuevas propiedades y/o estado se reciben. Este método no es llamado en el render inicial.
+Es invocado inmediatamente antes de renderizar, cuando nuevas propiedades y/o estado han sido recibidas. Este método no es llamado en el render inicial.
 
-Usa esto como una oportunidad para realizar preparar una acción antes de que una actualización ocurra.
+Usa esto como una oportunidad para realizar una preparación antes de que una actualización ocurra.
 
 > Nota:
 >
@@ -197,7 +197,7 @@ void componentDidUpdate(
 
 Es invocado inmediatamente despues de que las actualizaciones del componente son enviadas al DOM. Este método no es llamado en el render inicial.
 
-Usa esto como una oportunidad para realizar operaciones en el DOM luego de que el componente ha sido actualizado.
+Usa este método como una oportunidad para realizar operaciones en el DOM luego de que el componente ha sido actualizado.
 
 
 ### Demontar: componentWillUnmount
